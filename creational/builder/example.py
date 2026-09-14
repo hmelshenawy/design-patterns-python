@@ -4,9 +4,10 @@ class Car:
         self.color = "white"
         self.wheels = "standard"
         self.sunroof = False
+        self.body="Sedan"
 
     def describe(self):
-        print(f"{self.color} car: {self.engine} engine, "
+        print(f"{self.color} car: {self.engine} engine, body: {self.body} "
               f"{self.wheels} wheels, sunroof={self.sunroof}")
 
 
@@ -16,6 +17,10 @@ class CarBuilder:
 
     def with_engine(self, engine):
         self.car.engine = engine
+        return self
+    
+    def with_body(self, body):
+        self.car.body = body
         return self
 
     def with_color(self, color):
@@ -35,6 +40,6 @@ class CarBuilder:
 
 
 if __name__ == "__main__":
-    car = (CarBuilder().with_engine("electric").with_color("blue")
+    car = (CarBuilder().with_engine("electric").with_color("blue").with_body("SUV")
            .with_wheels("alloy").with_sunroof().build())
     car.describe()
