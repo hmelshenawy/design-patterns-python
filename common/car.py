@@ -6,7 +6,7 @@ class Car:
         self.wheels = "standard"
         self.sunroof = False
         self.body = "Sedan"
-        self.driving_mode = None
+        # self.driving_mode = None
 
     def set_driving_mode(self, driving_mode):
         self.driving_mode = driving_mode

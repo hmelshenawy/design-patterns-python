@@ -1,4 +1,4 @@
-from creational.factory.example import create_car
+from creational.factory.example import car_factory
 
 
 class EcoMode:
@@ -17,7 +17,7 @@ class ComfortMode:
 
 
 if __name__ == "__main__":
-    car = create_car("BMW")
+    car = car_factory("BMW")
     car.set_driving_mode(EcoMode())
     car.drive()
     car.set_driving_mode(SportMode())

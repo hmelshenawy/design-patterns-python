@@ -2,8 +2,8 @@ from common.car import Car
 
 
 class CarBuilder:
-    def __init__(self, brand):
-        self.car = Car(brand)
+    def __init__(self, car):
+        self.car = car
 
     def with_engine(self, engine):
         self.car.engine = engine

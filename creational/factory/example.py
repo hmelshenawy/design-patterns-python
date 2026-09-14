@@ -17,7 +17,7 @@ class Tesla(Car):
         self.engine = "electric"
 
 
-def create_car(brand):
+def car_factory(brand):
     if brand == "BMW":
         return BMW()
     if brand == "Porsche":
@@ -29,5 +29,5 @@ def create_car(brand):
 
 if __name__ == "__main__":
     for brand in ["BMW", "Porsche", "Tesla"]:
-        car = create_car(brand)
+        car = car_factory(brand)
         print(f"Created a {car.brand} car.")
