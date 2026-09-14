@@ -13,8 +13,10 @@ It coordinates their work for the caller.
 ## Car Example
 
 `Engine`, `FuelSystem`, and `Electronics` each perform one operation.
-`Car` is the facade: its `start()` method turns on electronics, checks fuel,
-and starts the engine through one call.
+`StartupCar` extends the shared Car and is the facade: its `start()` method
+turns on electronics, checks fuel, and starts the engine through one call.
+Its `engine_system` holds the engine component; the shared `engine` field
+still describes the engine type. The subsystem objects stay local to this example.
 
 ## Mental Model
 
@@ -22,8 +24,8 @@ One simple button coordinates many parts.
 
 ## Run
 
-From this pattern folder:
+From the repository root:
 
 ```sh
-python example.py
+python -m structural.facade.example
 ```

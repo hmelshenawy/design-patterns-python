@@ -12,9 +12,10 @@ Simple Factory function, not the inheritance-based Factory Method variant.
 
 ## Car Example
 
-`BMW`, `Toyota`, and `Tesla` are different cars with the same `drive()` method.
-`create_car()` chooses the class from a brand name and returns a new car.
-The caller can drive the result without knowing its class.
+`BMW`, `Porsche`, and `Tesla` inherit from the shared `common.car.Car`.
+`create_car()` chooses the concrete class from a brand name and returns a new
+car. The example prints which car was created. Factory chooses the object;
+it does not choose or implement driving behavior.
 
 ## Mental Model
 
@@ -22,8 +23,8 @@ Which object should I create?
 
 ## Run
 
-From this pattern folder:
+From the repository root:
 
 ```sh
-python example.py
+python -m creational.factory.example
 ```

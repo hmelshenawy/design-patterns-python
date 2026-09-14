@@ -12,11 +12,13 @@ Wrappers can be stacked to combine features.
 
 ## Car Example
 
-`Car` provides a basic description and price. `Turbo` and `SportExhaust` wrap
+`PricedCar` extends the shared Car with `description()` and `cost()`.
+`Turbo` and `SportExhaust` wrap
 any object with `description()` and `cost()`, call those methods, and add
 their own feature and price. Both wrappers keep those same methods, so an
 exhaust can wrap a turbo-equipped car. This is the object design pattern,
-not Python's `@decorator` syntax.
+not Python's `@decorator` syntax. The wrappers preserve the pricing interface;
+they do not inherit from Car or forward its other methods.
 
 ## Mental Model
 
@@ -24,8 +26,8 @@ Add features by wrapping an object.
 
 ## Run
 
-From this pattern folder:
+From the repository root:
 
 ```sh
-python example.py
+python -m structural.decorator.example
 ```

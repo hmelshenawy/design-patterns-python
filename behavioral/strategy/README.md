@@ -13,8 +13,10 @@ The car delegates to the chosen behavior, which the caller can replace.
 ## Car Example
 
 `EcoMode`, `SportMode`, and `ComfortMode` each provide a different `drive()`
-behavior. `Car` holds the selected mode and calls its method. The example
-switches modes on the same car while it runs.
+behavior. The example gets a BMW from `create_car()` and uses the shared Car's
+`set_driving_mode()` method to switch between them. The same car delegates
+`drive()` to the selected mode. Factory supplies the car; Strategy is the focus
+here because its driving behavior changes without creating another car.
 
 ## Mental Model
 
@@ -22,8 +24,8 @@ Which behavior should I use?
 
 ## Run
 
-From this pattern folder:
+From the repository root:
 
 ```sh
-python example.py
+python -m behavioral.strategy.example
 ```

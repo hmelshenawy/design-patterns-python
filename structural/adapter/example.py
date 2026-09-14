@@ -1,3 +1,6 @@
+from common.car import Car
+
+
 class LegacyCharger:
     def supply_power(self):
         print("Legacy charger: supplying power.")
@@ -12,13 +15,17 @@ class ChargerAdapter:
         self.legacy_charger.supply_power()
 
 
-class Car:
+class ElectricCar(Car):
+    def __init__(self, brand):
+        super().__init__(brand)
+        self.engine = "electric"
+
     def charge_with(self, charger):
         charger.charge()
-        print("Car: charging successfully.")
+        print(f"{self.brand}: charging successfully.")
 
 
 if __name__ == "__main__":
     old_charger = LegacyCharger()
     compatible_charger = ChargerAdapter(old_charger)
-    Car().charge_with(compatible_charger)
+    ElectricCar("Tesla").charge_with(compatible_charger)

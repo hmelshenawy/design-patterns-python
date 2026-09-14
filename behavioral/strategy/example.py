@@ -1,3 +1,6 @@
+from creational.factory.example import create_car
+
+
 class EcoMode:
     def drive(self):
         print("Eco: accelerate gently to save energy.")
@@ -13,18 +16,11 @@ class ComfortMode:
         print("Comfort: accelerate smoothly for a relaxed ride.")
 
 
-class Car:
-    def __init__(self, driving_mode):
-        self.driving_mode = driving_mode
-
-    def drive(self):
-        self.driving_mode.drive()
-
-
 if __name__ == "__main__":
-    car = Car(EcoMode())
+    car = create_car("BMW")
+    car.set_driving_mode(EcoMode())
     car.drive()
-    car.driving_mode = SportMode()
+    car.set_driving_mode(SportMode())
     car.drive()
-    car.driving_mode = ComfortMode()
+    car.set_driving_mode(ComfortMode())
     car.drive()

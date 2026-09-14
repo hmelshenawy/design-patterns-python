@@ -1,9 +1,12 @@
-class Car:
+from common.car import Car
+
+
+class RemoteCar(Car):
     def start(self):
-        print("Car: engine started.")
+        print(f"{self.brand}: engine started.")
 
     def lock(self):
-        print("Car: doors locked.")
+        print(f"{self.brand}: doors locked.")
 
 
 class StartCarCommand:
@@ -36,7 +39,8 @@ class RemoteControl:
 
 
 if __name__ == "__main__":
-    car, remote = Car(), RemoteControl()
+    car = RemoteCar("BMW")
+    remote = RemoteControl()
     remote.submit(LockCarCommand(car))
     remote.submit(StartCarCommand(car))
     print("Actions queued; now executing:")

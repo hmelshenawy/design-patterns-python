@@ -12,10 +12,11 @@ Each named step makes a configuration choice easy to see.
 
 ## Car Example
 
-`Car` holds the engine, color, wheels, and sunroof choices. `CarBuilder` starts
-with a default car and provides methods to configure it. Each method returns
-the builder so calls can be chained; `build()` returns its car. Use a new
-builder for each new car in this minimal example.
+The shared `common.car.Car` holds the brand, engine, body, color, wheels, and
+sunroof choices. `CarBuilder(brand)` starts with a plain shared car and configures
+it step by step. Each method returns the builder so calls can be chained;
+`build()` returns its car. Use a new builder for each new car in this minimal
+example. Builder neither selects Factory subclasses nor chooses driving strategies.
 
 ## Mental Model
 
@@ -23,8 +24,8 @@ Build an object one choice at a time.
 
 ## Run
 
-From this pattern folder:
+From the repository root:
 
 ```sh
-python example.py
+python -m creational.builder.example
 ```

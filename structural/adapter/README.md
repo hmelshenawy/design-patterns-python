@@ -12,9 +12,11 @@ The adapter translates the call to the wrapped object's interface.
 
 ## Car Example
 
-`Car` calls `charge()` on its charger. `LegacyCharger` supplies power through
+`ElectricCar` extends the shared Car with `charge_with()`, which calls
+`charge()` on its charger. `LegacyCharger` supplies power through
 `supply_power()`. `ChargerAdapter` wraps the legacy charger and connects those
-two method names without changing either original class.
+two method names without changing either original interface. The adapter is
+a charger wrapper, not a car.
 
 ## Mental Model
 
@@ -22,8 +24,8 @@ Make something incompatible fit my interface.
 
 ## Run
 
-From this pattern folder:
+From the repository root:
 
 ```sh
-python example.py
+python -m structural.adapter.example
 ```

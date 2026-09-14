@@ -12,8 +12,9 @@ source notifies its subscribers through a common method.
 
 ## Car Example
 
-`Car` keeps subscribers and reports a low-fuel event to each one's `update()`
-method. `Dashboard` displays a warning and `MobileApp` displays a notification.
+`ObservableCar` extends the shared Car with a subscriber list and reports a
+low-fuel event to each subscriber's `update()` method. `Dashboard` displays a
+warning and `MobileApp` displays a notification. Neither observer is a car.
 After the phone unsubscribes, only the dashboard receives the next event.
 
 ## Mental Model
@@ -22,8 +23,8 @@ One event tells everyone who subscribed.
 
 ## Run
 
-From this pattern folder:
+From the repository root:
 
 ```sh
-python example.py
+python -m behavioral.observer.example
 ```

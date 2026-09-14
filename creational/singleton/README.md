@@ -2,7 +2,7 @@
 
 ## What problem does it solve?
 
-The car dashboard and GPS need to share settings. Separate settings objects
+The car dashboard and MBUX infotainment system need to share settings. Separate settings objects
 could disagree about whether distances use kilometers or miles.
 
 ## Core Idea
@@ -12,11 +12,13 @@ Changes made through one reference are visible through the others.
 
 ## Car Example
 
-`CarSettings` stores distance units. Python's `__new__()` method creates an
+`CarSettings` stores distance units, language, and brightness. Python's `__new__()` method creates an
 object before initialization; here it creates the instance only once and
-returns that saved instance on later calls. The dashboard and GPS references
+returns that saved instance on later calls. The dashboard and MBUX references
 therefore share one object within this Python process. This teaching example
-does not handle concurrent creation or subclasses.
+does not handle concurrent creation or subclasses. The example changes language
+and units through the dashboard reference. Settings belong to the car world,
+but are not a Car and do not need to inherit from the shared model.
 
 ## Mental Model
 
@@ -24,8 +26,8 @@ Everyone uses the same settings object.
 
 ## Run
 
-From this pattern folder:
+From the repository root:
 
 ```sh
-python example.py
+python -m creational.singleton.example
 ```

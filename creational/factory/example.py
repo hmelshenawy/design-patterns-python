@@ -1,16 +1,20 @@
-class BMW:
-    def drive(self):
-        print("BMW: enjoying a sporty drive.")
+from common.car import Car
 
 
-class Porsche:
-    def drive(self):
-        print("Porsche: enjoying your dream ride.")
+class BMW(Car):
+    def __init__(self):
+        super().__init__("BMW")
 
 
-class Tesla:
-    def drive(self):
-        print("Tesla: driving on electric power.")
+class Porsche(Car):
+    def __init__(self):
+        super().__init__("Porsche")
+
+
+class Tesla(Car):
+    def __init__(self):
+        super().__init__("Tesla")
+        self.engine = "electric"
 
 
 def create_car(brand):
@@ -26,4 +30,4 @@ def create_car(brand):
 if __name__ == "__main__":
     for brand in ["BMW", "Porsche", "Tesla"]:
         car = create_car(brand)
-        car.drive()
+        print(f"Created a {car.brand} car.")

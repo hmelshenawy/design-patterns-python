@@ -12,7 +12,8 @@ Another object can store the request and execute it later through a common metho
 
 ## Car Example
 
-`Car` receives the actual start and lock calls. `StartCarCommand` and
+`RemoteCar` extends the shared Car with start and lock actions.
+It receives the actual calls. `StartCarCommand` and
 `LockCarCommand` each hold a car and expose `execute()`. `RemoteControl`
 queues those command objects, executes them in order, and clears the queue.
 
@@ -22,8 +23,8 @@ Turn an action into an object.
 
 ## Run
 
-From this pattern folder:
+From the repository root:
 
 ```sh
-python example.py
+python -m behavioral.command.example
 ```

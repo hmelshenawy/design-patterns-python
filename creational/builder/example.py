@@ -1,24 +1,14 @@
-class Car:
-    def __init__(self):
-        self.engine = "petrol"
-        self.color = "white"
-        self.wheels = "standard"
-        self.sunroof = False
-        self.body="Sedan"
-
-    def describe(self):
-        print(f"{self.color} car: {self.engine} engine, body: {self.body} "
-              f"{self.wheels} wheels, sunroof={self.sunroof}")
+from common.car import Car
 
 
 class CarBuilder:
-    def __init__(self):
-        self.car = Car()
+    def __init__(self, brand):
+        self.car = Car(brand)
 
     def with_engine(self, engine):
         self.car.engine = engine
         return self
-    
+
     def with_body(self, body):
         self.car.body = body
         return self
@@ -40,6 +30,6 @@ class CarBuilder:
 
 
 if __name__ == "__main__":
-    car = (CarBuilder().with_engine("electric").with_color("blue").with_body("SUV")
+    car = (CarBuilder("Custom").with_engine("electric").with_color("blue").with_body("SUV")
            .with_wheels("alloy").with_sunroof().build())
     car.describe()
