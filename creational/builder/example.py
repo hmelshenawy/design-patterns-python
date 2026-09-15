@@ -1,9 +1,10 @@
 from car.car import Car
-
+from time import sleep
 
 class CarBuilder:
     def __init__(self, car):
-        print("Created!!",car.brand)
+        print("Creating",car.brand)
+        sleep(3)
         self.car = car
 
     def with_engine(self, engine):
@@ -27,6 +28,7 @@ class CarBuilder:
         return self
 
     def build(self):
+        print(self.car.brand," Created Successfully!!")
         return self.car
 
 

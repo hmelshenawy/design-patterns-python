@@ -2,6 +2,7 @@ from car.dashboard import Dashboard
 from car.components import Engine, FuelSystem, Electronics
 from behavioral.state.example import Parked
 from creational.singleton.example import CarSettings
+from time import sleep
 
 
 class Car:
@@ -12,7 +13,7 @@ class Car:
         self.wheels = "standard"
         self.sunroof = False
         self.body = "Sedan"
-        self.observers = []
+        self.__observers = []   # __ bt2ol lel python dh msh ay 7ad yt3ml m3ah like private attr
         self.driving_mode = None
         self.dashboard = Dashboard()
         self.settings = CarSettings()
@@ -22,6 +23,7 @@ class Car:
         self.electronics = Electronics()
 
     def set_driving_mode(self, driving_mode):
+        sleep(2)
         print("Driving Mode Selected: ", driving_mode.name)
         self.driving_mode = driving_mode
 
@@ -37,13 +39,14 @@ class Car:
               f"body: {self.body}, {self.wheels} wheels, sunroof={self.sunroof}")
 
     def subscribe(self, observer):
-        self.observers.append(observer)
+        self.__observers.append(observer)
 
     def unsubscribe(self, observer):
-        self.observers.remove(observer)
+        self.__observers.remove(observer)
 
     def notify(self, event):
-        for observer in self.observers:
+        for observer in self.__observers:
+            sleep(1)
             observer.update(event)
 
     def start(self):
