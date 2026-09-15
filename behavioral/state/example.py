@@ -1,11 +1,9 @@
-from common.car import Car
-
-
 class Parked:
     def press_accelerator(self, car):
         print("Parked: start the engine before driving.")
 
     def start(self, car):
+        car.engine_system.start()
         print("Parked -> Running: engine started.")
         car.state = Running()
 
@@ -27,20 +25,10 @@ class Moving:
         print("Moving: engine is already on.")
 
 
-class StatefulCar(Car):
-    def __init__(self, brand):
-        super().__init__(brand)
-        self.state = Parked()
-
-    def start(self):
-        self.state.start(self)
-
-    def press_accelerator(self):
-        self.state.press_accelerator(self)
-
-
 if __name__ == "__main__":
-    car = StatefulCar("BMW")
+    from car.car import Car
+
+    car = Car("BMW")
     car.press_accelerator()
     car.start()
     car.start()

@@ -12,8 +12,9 @@ The car delegates to the chosen behavior, which the caller can replace.
 
 ## Car Example
 
-`EcoMode`, `SportMode`, and `ComfortMode` each provide a different `drive()`
-behavior. The example gets a BMW from `create_car()` and uses the shared Car's
+`DrivingMode` in `car/driving_mode.py` supplies the shared strategy name.
+`EcoMode`, `SportMode`, and `ComfortMode` inherit it and each provide a different `drive()`
+behavior. The example gets a BMW from `car_factory()` and uses the shared Car's
 `set_driving_mode()` method to switch between them. The same car delegates
 `drive()` to the selected mode. Factory supplies the car; Strategy is the focus
 here because its driving behavior changes without creating another car.

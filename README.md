@@ -15,7 +15,7 @@ This is a small Python cheat sheet, not a real car application.
 | Pattern | Category | Car Example | Mental Model |
 | --- | --- | --- | --- |
 | [Factory](creational/factory/) | Creational | Create a BMW, Porsche, or Tesla | Which object should I create? |
-| [Builder](creational/builder/) | Creational | Choose a brand, engine, body, color, wheels, and sunroof | Build an object one choice at a time. |
+| [Builder](creational/builder/) | Creational | Configure an existing car's engine, body, color, wheels, and sunroof | Build an object one choice at a time. |
 | [Singleton](creational/singleton/) | Creational | Share one CarSettings instance | Everyone uses the same settings object. |
 | [Adapter](structural/adapter/) | Structural | Connect an incompatible charger | Make something incompatible fit my interface. |
 | [Facade](structural/facade/) | Structural | Start a car with one call | One simple button coordinates many parts. |
@@ -28,26 +28,41 @@ This is a small Python cheat sheet, not a real car application.
 ## Why always cars?
 
 All patterns use the same Car world so you can compare them without learning
-a new story each time. Examples share [the Car domain model](common/car.py)
-so patterns can later be combined. It holds a brand, basic configuration, and
-an optional driving mode.
+a new story each time. Examples share [the Car domain model](car/car.py).
+It holds the car's configuration, driving mode, state, subscribers, and components.
 
-Factory brands inherit from `Car`; Builder configures a plain `Car`. The other
-car examples use small local subclasses to keep charging, startup, pricing,
-notifications, remote actions, and state transitions out of the shared model.
-Helpers such as chargers, commands, observers, states, and decorators remain
-separate objects. Singleton shares settings and needs no Car inheritance.
-The examples favor clarity over production features.
+Factory brands inherit from `Car`; Builder configures the exact object it receives.
+Every pattern works with this shared model. The car owns its
+[Dashboard](car/dashboard.py) and [startup components](car/components.py).
+[DrivingMode](car/driving_mode.py) supplies a name; concrete strategies keep
+their behavior in the Strategy folder. States, commands, observers, chargers,
+and decorators remain small separate objects, with no special Car subclasses
+for individual patterns. Only the three Factory brands inherit from Car.
+
+This is a teaching model: `drive()` delegates the driving style to Strategy,
+while `start()` and `press_accelerator()` demonstrate State transitions.
+Decorators wrap the pricing interface; they do not forward every Car method.
 
 ## Combining Patterns
 
 - Factory -> creates the car.
 - Strategy -> controls its driving behavior.
-- Builder -> configures/builds the car.
+- Builder -> configures the existing car without replacing it.
 
-[examples/combined.py](examples/combined.py) uses Factory to create one BMW,
-then switches it from Sport to Eco mode using Strategy. Builder also returns
-a shared `Car`, but is kept separate here to keep the demonstration small.
+[main.py](main.py) demonstrates all ten patterns around one Porsche: Factory
+creates it, Builder configures it as a red V8 coupe, Strategy switches driving
+modes, and Observer notifies its dashboard and a phone. The same car also uses
+shared settings, startup coordination, queued commands, state transitions,
+feature pricing, and a battery charger adapter.
+
+From the `design-patterns-python` repository root:
+
+```sh
+python main.py
+```
+
+[examples/combined.py](examples/combined.py) preserves the smaller Porsche
+demonstration of Factory, Builder, Strategy, and Observer.
 
 ```sh
 python -m examples.combined
@@ -71,4 +86,5 @@ python -m creational.factory.example
 Each pattern folder has its own explanation and module run command. Module
 execution makes absolute imports resolve from the repository root; no path
 changes or installation are needed. Python 3 supports these folders as
-namespace packages, so empty `__init__.py` files are unnecessary.
+namespace packages. The central `car/` domain has its own `__init__.py`;
+the pattern folders need no package boilerplate.

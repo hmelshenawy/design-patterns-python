@@ -1,12 +1,4 @@
-from common.car import Car
-
-
-class PricedCar(Car):
-    def description(self):
-        return f"Basic {self.brand}"
-
-    def cost(self):
-        return 20000
+from car.car import Car
 
 
 class Turbo:
@@ -32,7 +24,7 @@ class SportExhaust:
 
 
 if __name__ == "__main__":
-    basic_car = PricedCar("BMW")
+    basic_car = Car("BMW")
     upgraded_car = SportExhaust(Turbo(basic_car))
     for car in [basic_car, upgraded_car]:
         print(f"{car.description()}: ${car.cost():,}")

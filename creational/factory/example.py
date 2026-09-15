@@ -1,4 +1,4 @@
-from common.car import Car
+from car.car import Car
 
 
 class BMW(Car):

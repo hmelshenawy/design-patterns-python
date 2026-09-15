@@ -12,7 +12,7 @@ Wrappers can be stacked to combine features.
 
 ## Car Example
 
-`PricedCar` extends the shared Car with `description()` and `cost()`.
+The shared `Car` supplies `description()` and `cost()` with a simple teaching price.
 `Turbo` and `SportExhaust` wrap
 any object with `description()` and `cost()`, call those methods, and add
 their own feature and price. Both wrappers keep those same methods, so an

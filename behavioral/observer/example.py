@@ -1,9 +1,4 @@
-from common.car import Car
-
-
-class Dashboard:
-    def update(self, event):
-        print(f"Dashboard warning: {event}")
+from car.car import Car
 
 
 class MobileApp:
@@ -11,29 +6,15 @@ class MobileApp:
         print(f"Mobile notification: {event}")
 
 
-class ObservableCar(Car):
-    def __init__(self, brand):
-        super().__init__(brand)
-        self.observers = []
-
-    def subscribe(self, observer):
-        self.observers.append(observer)
-
-    def unsubscribe(self, observer):
-        self.observers.remove(observer)
-
-    def report_low_fuel(self):
-        for observer in self.observers:
-            observer.update(f"{self.brand}: low fuel, please refuel.")
-
-
 if __name__ == "__main__":
-    car = ObservableCar("BMW")
-    dashboard = Dashboard()
+    car = Car("BMW")
+    dashboard = car.dashboard
     mobile = MobileApp()
     car.subscribe(dashboard)
     car.subscribe(mobile)
-    car.report_low_fuel()
+    car.notify("Low fuel, please refuel.")
     car.unsubscribe(mobile)
     print("After the mobile app unsubscribes:")
-    car.report_low_fuel()
+    car.notify("Low fuel, please refuel.")
+    print("_-_-_-_-_-_-_-_-_", car.brand)
+    car.notify("Check engine: reduced power.")

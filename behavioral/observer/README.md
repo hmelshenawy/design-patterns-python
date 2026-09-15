@@ -12,10 +12,11 @@ source notifies its subscribers through a common method.
 
 ## Car Example
 
-`ObservableCar` extends the shared Car with a subscriber list and reports a
-low-fuel event to each subscriber's `update()` method. `Dashboard` displays a
-warning and `MobileApp` displays a notification. Neither observer is a car.
-After the phone unsubscribes, only the dashboard receives the next event.
+`Car` directly provides `subscribe()`, `unsubscribe()`, and `notify(event)`.
+Its `dashboard` is a `Dashboard` from `car/dashboard.py`; it displays warnings
+when subscribed. The external `MobileApp` displays notifications. The same
+generic notification method handles low-fuel and engine events. After the
+phone unsubscribes, only the dashboard receives subsequent events.
 
 ## Mental Model
 

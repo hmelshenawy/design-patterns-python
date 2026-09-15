@@ -1,4 +1,4 @@
-from common.car import Car
+from car.car import Car
 
 
 class CarBuilder:
@@ -30,6 +30,8 @@ class CarBuilder:
 
 
 if __name__ == "__main__":
-    car = (CarBuilder("Custom").with_engine("electric").with_color("blue").with_body("SUV")
+    original_car = Car("Custom")
+    car = (CarBuilder(original_car).with_engine("electric").with_color("blue").with_body("SUV")
            .with_wheels("alloy").with_sunroof().build())
     car.describe()
+    print("Same car:", car is original_car)

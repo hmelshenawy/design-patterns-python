@@ -12,8 +12,8 @@ Another object can store the request and execute it later through a common metho
 
 ## Car Example
 
-`RemoteCar` extends the shared Car with start and lock actions.
-It receives the actual calls. `StartCarCommand` and
+The shared `Car` receives start and lock actions. Starting delegates to its
+current state, so an already-running engine is not restarted. `StartCarCommand` and
 `LockCarCommand` each hold a car and expose `execute()`. `RemoteControl`
 queues those command objects, executes them in order, and clears the queue.
 

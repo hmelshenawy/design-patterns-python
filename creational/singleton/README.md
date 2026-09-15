@@ -19,6 +19,7 @@ therefore share one object within this Python process. This teaching example
 does not handle concurrent creation or subclasses. The example changes language
 and units through the dashboard reference. Settings belong to the car world,
 but are not a Car and do not need to inherit from the shared model.
+The shared Car and its Dashboard also obtain this same settings instance.
 
 ## Mental Model
 

@@ -12,11 +12,12 @@ The adapter translates the call to the wrapped object's interface.
 
 ## Car Example
 
-`ElectricCar` extends the shared Car with `charge_with()`, which calls
+The shared `Car` provides `charge_with()`, which calls
 `charge()` on its charger. `LegacyCharger` supplies power through
 `supply_power()`. `ChargerAdapter` wraps the legacy charger and connects those
 two method names without changing either original interface. The adapter is
-a charger wrapper, not a car.
+a charger wrapper, not a car. This models a battery-charging method interface,
+not real electrical compatibility; a petrol car also has a battery.
 
 ## Mental Model
 

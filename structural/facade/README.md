@@ -12,11 +12,11 @@ It coordinates their work for the caller.
 
 ## Car Example
 
-`Engine`, `FuelSystem`, and `Electronics` each perform one operation.
-`StartupCar` extends the shared Car and is the facade: its `start()` method
-turns on electronics, checks fuel, and starts the engine through one call.
-Its `engine_system` holds the engine component; the shared `engine` field
-still describes the engine type. The subsystem objects stay local to this example.
+`Engine`, `FuelSystem`, and `Electronics` live in `car/components.py` and
+belong to the shared Car. `CarStartup(car)` is a facade holding that existing
+car. Its `start()` turns on electronics, checks fuel, and calls `car.start()`.
+The car's state starts the engine when needed. The `engine_system` component
+is separate from the `engine` field describing the engine type. No new car is created.
 
 ## Mental Model
 

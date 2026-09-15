@@ -1,7 +1,7 @@
 from creational.factory.example import car_factory
 from behavioral.strategy.example import SportMode, EcoMode
 from creational.builder.example import CarBuilder
-
+from behavioral.observer.example import MobileApp
 
 if __name__ == "__main__":
     print("-----Start Building------")
@@ -19,3 +19,12 @@ if __name__ == "__main__":
     # Swap behavior on the same car.
     turboS.set_driving_mode(EcoMode())
     turboS.drive()
+
+    print("--------------------------")
+    dashboard = turboS.dashboard
+    mobile = MobileApp()
+
+    turboS.subscribe(dashboard)
+    turboS.subscribe(mobile)
+
+    turboS.notify("Check Brake Pads")

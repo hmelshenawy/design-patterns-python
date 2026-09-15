@@ -12,11 +12,11 @@ Each named step makes a configuration choice easy to see.
 
 ## Car Example
 
-The shared `common.car.Car` holds the brand, engine, body, color, wheels, and
-sunroof choices. `CarBuilder(brand)` starts with a plain shared car and configures
-it step by step. Each method returns the builder so calls can be chained;
-`build()` returns its car. Use a new builder for each new car in this minimal
-example. Builder neither selects Factory subclasses nor chooses driving strategies.
+The shared `car.car.Car` holds the brand, engine, body, color, wheels, and
+sunroof choices. `CarBuilder(car)` accepts an existing car and configures it
+step by step. Each method returns the builder so calls can be chained;
+`build()` returns that exact car, not a copy. A factory-created Porsche keeps
+its identity and class. Builder does not select driving strategies.
 
 ## Mental Model
 

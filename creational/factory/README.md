@@ -12,8 +12,8 @@ Simple Factory function, not the inheritance-based Factory Method variant.
 
 ## Car Example
 
-`BMW`, `Porsche`, and `Tesla` inherit from the shared `common.car.Car`.
-`create_car()` chooses the concrete class from a brand name and returns a new
+`BMW`, `Porsche`, and `Tesla` inherit from the shared `car.car.Car`.
+`car_factory()` chooses the concrete class from a brand name and returns a new
 car. The example prints which car was created. Factory chooses the object;
 it does not choose or implement driving behavior.
 
