@@ -5,8 +5,8 @@ from creational.singleton.example import CarSettings
 
 
 class Car:
-    def __init__(self, brand):
-        self.brand = brand
+    def __init__(self, ):
+        self.brand = self.__class__.__name__
         self.engine = "petrol"
         self.color = "white"
         self.wheels = "standard"

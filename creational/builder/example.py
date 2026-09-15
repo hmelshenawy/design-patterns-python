@@ -3,6 +3,7 @@ from car.car import Car
 
 class CarBuilder:
     def __init__(self, car):
+        print("Created!!",car.brand)
         self.car = car
 
     def with_engine(self, engine):
